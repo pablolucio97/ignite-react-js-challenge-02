@@ -1,11 +1,11 @@
-import { ReactNode } from 'react'
+import { ReactNode, memo } from 'react'
 
 type ContentProps = {
   children: ReactNode;
   title: string;
 }
 
-export function Content({ children, title }: ContentProps) {
+export function ContentComponent({ children, title }: ContentProps) {
   return (
     <div className="container">
       <main>
@@ -19,3 +19,7 @@ export function Content({ children, title }: ContentProps) {
     </div>
   )
 }
+
+export const Content = memo(ContentComponent, (prevProps, nextProps) => {
+  return Object.is(prevProps, nextProps)
+})

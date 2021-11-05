@@ -1,10 +1,10 @@
-import { ReactNode } from "react"
+import { ReactNode, memo } from "react"
 
 type SidebarProps = {
   children: ReactNode;
 }
 
-export function SideBar({ children }: SidebarProps) {
+export function SideBarComponent({ children }: SidebarProps) {
 
   return (
     <nav className="sidebar">
@@ -15,3 +15,7 @@ export function SideBar({ children }: SidebarProps) {
     </nav>
   )
 }
+
+export const SideBar = memo(SideBarComponent, (prevProps, nextProps) => {
+  return Object.is(prevProps.children, nextProps.children)
+})
